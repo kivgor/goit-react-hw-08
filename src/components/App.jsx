@@ -4,9 +4,6 @@ import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import { fetchData } from '../redux/contactsOps';
-// import ContactForm from './ContactForm/ContactForm';
-// import ContactList from './ContactList/ContactList';
-// import SearchBox from './SearchBox/SearchBox';
 import HomePage from '../pages/HomePage/HomePage';
 import NotFound from '../pages/NotFound/NotFound';
 import LoginPage from '../pages/LoginPage/LoginPage';
@@ -25,11 +22,11 @@ function App() {
     <div className={css.app}>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="/" element={<HomePage />} />
+          <Route index element={<HomePage />} />
           <Route path="/contacts" element={<ContactsPage />} />
         </Route>
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/register " element={<RegistrationPage />} />
+        <Route path="/register" element={<RegistrationPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
