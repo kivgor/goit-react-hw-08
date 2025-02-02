@@ -1,6 +1,8 @@
 import { Field, Form, Formik } from 'formik';
 import css from './RegistrationPage.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { registerThunk } from '../../redux/auth/operations';
 
 const RegistrationPage = () => {
   const initialValues = {
@@ -8,9 +10,15 @@ const RegistrationPage = () => {
     password: '',
     name: '',
   };
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const handleSubmit = (values, options) => {
     console.log(values);
     options.resetForm();
+    dispatch(registerThunk(values))
+      .unwrap()
+      .then(() => navigate('/'));
   };
   return (
     <div className={css.formThumb}>
@@ -19,7 +27,7 @@ const RegistrationPage = () => {
           <h3 className={css.title}>Register</h3>
           <label htmlFor="" className={css.label}>
             <span>Name:</span>
-            <Field name="naim" className={css.field}></Field>
+            <Field name="name" className={css.field}></Field>
           </label>
           <label htmlFor="" className={css.label}>
             <span>Email:</span>
