@@ -1,0 +1,21 @@
+.thumb {
+  display: flex;
+  gap: 20px;
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
+}
+
+.navlink {
+  text-decoration: none;
+}
+
+.navlink:hover {
+  text-decoration: underline;
+}
+
+.bold {
+  font-weight: bold;
+}

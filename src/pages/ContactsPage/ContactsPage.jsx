@@ -1,9 +1,16 @@
+import { useDispatch } from 'react-redux';
 import ContactForm from '../../components/ContactForm/ContactForm';
 import ContactList from '../../components/ContactList/ContactList';
 import SearchBox from '../../components/SearchBox/SearchBox';
 import css from './ContactsPage.module.css';
+import { useEffect } from 'react';
+import { fetchData } from '../../redux/contacts/operations';
 
 const ContactsPage = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchData());
+  }, [dispatch]);
   return (
     <div>
       <h1 className={css.title}>Phonebook</h1>

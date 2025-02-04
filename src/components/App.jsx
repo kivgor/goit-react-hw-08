@@ -1,9 +1,5 @@
 import 'modern-normalize';
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-
-import { fetchData } from '../redux/contactsOps';
 import HomePage from '../pages/HomePage/HomePage';
 import NotFound from '../pages/NotFound/NotFound';
 import LoginPage from '../pages/LoginPage/LoginPage';
@@ -13,10 +9,10 @@ import ContactsPage from '../pages/ContactsPage/ContactsPage';
 import Layout from './Layout/Layout';
 
 function App() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchData());
-  }, [dispatch]);
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(fetchData());
+  // }, [dispatch]);
 
   return (
     <div className={css.app}>
