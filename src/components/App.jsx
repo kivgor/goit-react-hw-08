@@ -8,11 +8,12 @@ import LoginPage from '../pages/LoginPage/LoginPage';
 import RegistrationPage from '../pages/RegistrationPage/RegistrationPage';
 import NotFound from '../pages/NotFound/NotFound';
 import css from './App.module.css/';
-import { Toaster } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { refreshUserThunk } from '../redux/auth/operations';
 import { selectIsRefreshing } from '../redux/auth/selectors';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
+import RestrictedRoute from './RestrictedRoute/RestrictedRoute';
 
 function App() {
   const dispatch = useDispatch();
@@ -25,15 +26,35 @@ function App() {
   return isRefreshing ? null : (
     <div className={css.app}>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route
+          path="/"
+          element={
+            <PrivateRoute>
+              <Layout />
+            </PrivateRoute>
+          }
+        >
           <Route index element={<HomePage />} />
-          <Route path="/contacts" element={<ContactsPage />} />
+          <Route path="contacts" element={<ContactsPage />} />
         </Route>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegistrationPage />} />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute>
+              <LoginPage />
+            </RestrictedRoute>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute>
+              <RegistrationPage />
+            </RestrictedRoute>
+          }
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
-      <Toaster />
     </div>
   );
 }

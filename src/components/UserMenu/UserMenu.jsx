@@ -14,13 +14,11 @@ const UserMenu = () => {
       {isLoggedIn && <p className={css.bold}>Welcome, {user.name}</p>}
       <nav className={css.nav}>
         <NavLink
-          to="/"
           className={css.navlink}
           onClick={() => dispatch(logoutThunk())}
         >
           Logout
         </NavLink>
-        {/* <button onClick={() => dispatch(logoutThunk())}>Logout</button> */}
       </nav>
     </div>
   );
