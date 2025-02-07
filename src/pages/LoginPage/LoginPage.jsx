@@ -1,9 +1,9 @@
-import { Field, Form, Formik } from 'formik';
-import css from './LoginPage.module.css';
-// import { Link, useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+
+import { Field, Form, Formik } from 'formik';
+import { Link } from 'react-router-dom';
 import { loginThunk } from '../../redux/auth/operations';
+import css from './LoginPage.module.css';
 
 const LoginPage = () => {
   const initialValues = {
@@ -11,12 +11,9 @@ const LoginPage = () => {
     password: '',
   };
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
 
   const handleSubmit = (values, options) => {
     dispatch(loginThunk(values));
-    // .unwrap()
-    // .then(() => navigate('/'));
     options.resetForm();
   };
   return (
@@ -27,7 +24,6 @@ const LoginPage = () => {
           <label htmlFor="" className={css.label}>
             <span>Email:</span>
             <Field name="email" className={css.field}></Field>
-            {/* <Field name="email" type="email"></Field> */}
           </label>
 
           <label htmlFor="" className={css.label}>

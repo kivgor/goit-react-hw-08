@@ -1,19 +1,19 @@
 import 'modern-normalize';
 import { Route, Routes } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
+import { refreshUserThunk } from '../redux/auth/operations';
+import { selectIsRefreshing } from '../redux/auth/selectors';
 import Layout from './Layout/Layout';
 import HomePage from '../pages/HomePage/HomePage';
 import ContactsPage from '../pages/ContactsPage/ContactsPage';
 import LoginPage from '../pages/LoginPage/LoginPage';
 import RegistrationPage from '../pages/RegistrationPage/RegistrationPage';
 import NotFound from '../pages/NotFound/NotFound';
-import css from './App.module.css/';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { refreshUserThunk } from '../redux/auth/operations';
-import { selectIsRefreshing } from '../redux/auth/selectors';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import RestrictedRoute from './RestrictedRoute/RestrictedRoute';
+import css from './App.module.css/';
 
 function App() {
   const dispatch = useDispatch();
