@@ -3,9 +3,9 @@ import { useDispatch } from 'react-redux';
 import { Field, Form, Formik } from 'formik';
 import { Link } from 'react-router-dom';
 import { loginThunk } from '../../redux/auth/operations';
-import css from './LoginPage.module.css';
+import css from './LoginForm.module.css';
 
-const LoginPage = () => {
+const LoginForm = () => {
   const initialValues = {
     email: '',
     password: '',
@@ -56,4 +56,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default LoginForm;

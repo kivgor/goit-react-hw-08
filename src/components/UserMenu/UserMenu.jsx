@@ -13,12 +13,9 @@ const UserMenu = () => {
     <div className={css.thumb}>
       {isLoggedIn && <p className={css.bold}>Welcome, {user.name}</p>}
       <nav className={css.nav}>
-        <NavLink
-          className={css.navlink}
-          onClick={() => dispatch(logoutThunk())}
-        >
+        <button className={css.button} onClick={() => dispatch(logoutThunk())}>
           Logout
-        </NavLink>
+        </button>
       </nav>
     </div>
   );

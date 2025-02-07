@@ -1,10 +1,10 @@
 import { Field, Form, Formik } from 'formik';
-import css from './RegistrationPage.module.css';
+import css from './RegistrationForm.module.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { registerThunk } from '../../redux/auth/operations';
 
-const RegistrationPage = () => {
+const RegistrationForm = () => {
   const initialValues = {
     email: '',
     password: '',
@@ -64,4 +64,4 @@ const RegistrationPage = () => {
   );
 };
 
-export default RegistrationPage;
+export default RegistrationForm;

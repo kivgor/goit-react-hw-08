@@ -1,20 +1,22 @@
 import 'modern-normalize';
 import { Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { lazy, useEffect } from 'react';
 
 import { refreshUserThunk } from '../redux/auth/operations';
 import { selectIsRefreshing } from '../redux/auth/selectors';
 import Layout from './Layout/Layout';
 import HomePage from '../pages/HomePage/HomePage';
-import ContactsPage from '../pages/ContactsPage/ContactsPage';
-import LoginPage from '../pages/LoginPage/LoginPage';
-import RegistrationPage from '../pages/RegistrationPage/RegistrationPage';
+const ContactsPage = lazy(() => import('../pages/ContactsPage/ContactsPage'));
+const LoginForm = lazy(() => import('../pages/LoginForm/LoginForm'));
+const RegistrationForm = lazy(() =>
+  import('../pages/RegistrationForm/RegistrationForm')
+);
 import NotFound from '../pages/NotFound/NotFound';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import RestrictedRoute from './RestrictedRoute/RestrictedRoute';
-import css from './App.module.css/';
 import PublicRoute from './PublicRote/PublicRoute';
+import css from './App.module.css/';
 
 function App() {
   const dispatch = useDispatch();
@@ -48,7 +50,7 @@ function App() {
             path="/register"
             element={
               <RestrictedRoute>
-                <RegistrationPage />
+                <RegistrationForm />
               </RestrictedRoute>
             }
           />
@@ -56,7 +58,7 @@ function App() {
             path="/login"
             element={
               <RestrictedRoute>
-                <LoginPage />
+                <LoginForm />
               </RestrictedRoute>
             }
           />

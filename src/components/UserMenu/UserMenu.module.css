@@ -8,11 +8,12 @@
   gap: 20px;
 }
 
-.navlink {
+.button {
   text-decoration: none;
+  background-color: #fff;
 }
 
-.navlink:hover {
+.button:hover {
   text-decoration: underline;
 }
 

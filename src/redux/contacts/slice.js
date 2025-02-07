@@ -1,5 +1,6 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { addContact, deleteContact, fetchData } from './operations';
+import { logoutThunk } from '../auth/operations';
 
 const initialState = {
   contacts: {
@@ -27,6 +28,10 @@ const slice = createSlice({
       .addCase(addContact.fulfilled, (state, action) => {
         state.contacts.items.push(action.payload);
         state.isLoading = false;
+      })
+      .addCase(logoutThunk.fulfilled, state => {
+        state.user = { name: null, email: null };
+        state.isLoggedIn = false;
       })
       .addMatcher(
         isAnyOf(fetchData.pending, deleteContact.pending, addContact.pending),
