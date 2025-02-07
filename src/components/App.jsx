@@ -14,6 +14,7 @@ import NotFound from '../pages/NotFound/NotFound';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import RestrictedRoute from './RestrictedRoute/RestrictedRoute';
 import css from './App.module.css/';
+import PublicRoute from './PublicRote/PublicRoute';
 
 function App() {
   const dispatch = useDispatch();
@@ -26,33 +27,41 @@ function App() {
   return isRefreshing ? null : (
     <div className={css.app}>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <PrivateRoute>
-              <Layout />
-            </PrivateRoute>
-          }
-        >
-          <Route index element={<HomePage />} />
-          <Route path="contacts" element={<ContactsPage />} />
+        <Route path="/" element={<Layout />}>
+          <Route
+            index
+            element={
+              <PublicRoute>
+                <HomePage />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="contacts"
+            element={
+              <PrivateRoute>
+                <ContactsPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute>
+                <RegistrationPage />
+              </RestrictedRoute>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <RestrictedRoute>
+                <LoginPage />
+              </RestrictedRoute>
+            }
+          />
         </Route>
-        <Route
-          path="/login"
-          element={
-            <RestrictedRoute>
-              <LoginPage />
-            </RestrictedRoute>
-          }
-        />
-        <Route
-          path="/register"
-          element={
-            <RestrictedRoute>
-              <RegistrationPage />
-            </RestrictedRoute>
-          }
-        />
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
