@@ -27,12 +27,17 @@ const RegistrationPage = () => {
           <h3 className={css.title}>Register</h3>
           <label htmlFor="" className={css.label}>
             <span>Name:</span>
-            <Field name="name" className={css.field}></Field>
+            <Field name="name" className={css.field} required></Field>
           </label>
           <label htmlFor="" className={css.label}>
             <span>Email:</span>
-            <Field name="email" className={css.field}></Field>
-            {/* <Field name="email" type="email"></Field> */}
+            <Field
+              name="email"
+              type="email"
+              className={css.field}
+              placeholder="email@gmail.com"
+              required
+            ></Field>
           </label>
 
           <label htmlFor="" className={css.label}>
@@ -41,6 +46,7 @@ const RegistrationPage = () => {
               name="password"
               type="password"
               className={css.field}
+              required
             ></Field>
           </label>
           <button type="submit" className={css.button}>

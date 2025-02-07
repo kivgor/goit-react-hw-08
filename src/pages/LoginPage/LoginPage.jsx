@@ -23,7 +23,13 @@ const LoginPage = () => {
           <h3 className={css.title}>Login</h3>
           <label htmlFor="" className={css.label}>
             <span>Email:</span>
-            <Field name="email" className={css.field}></Field>
+            <Field
+              name="email"
+              type="email"
+              className={css.field}
+              placeholder="email@gmail.com"
+              required
+            ></Field>
           </label>
 
           <label htmlFor="" className={css.label}>
@@ -32,6 +38,7 @@ const LoginPage = () => {
               name="password"
               type="password"
               className={css.field}
+              required
             ></Field>
           </label>
           <button type="submit" className={css.button}>
