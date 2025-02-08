@@ -5,13 +5,12 @@ import { lazy, useEffect } from 'react';
 
 import { refreshUserThunk } from '../redux/auth/operations';
 import { selectIsRefreshing } from '../redux/auth/selectors';
+
+const ContactsPage = lazy(() => import('../pages/ContactsPage/ContactsPage'));
 import Layout from './Layout/Layout';
 import HomePage from '../pages/HomePage/HomePage';
-const ContactsPage = lazy(() => import('../pages/ContactsPage/ContactsPage'));
-const LoginForm = lazy(() => import('../pages/LoginForm/LoginForm'));
-const RegistrationForm = lazy(() =>
-  import('../pages/RegistrationForm/RegistrationForm')
-);
+import LoginForm from '../pages/LoginForm/LoginForm';
+import RegistrationForm from '../pages/RegistrationForm/RegistrationForm';
 import NotFound from '../pages/NotFound/NotFound';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import RestrictedRoute from './RestrictedRoute/RestrictedRoute';
