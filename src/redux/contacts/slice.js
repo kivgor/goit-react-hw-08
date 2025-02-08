@@ -30,7 +30,7 @@ const slice = createSlice({
         state.isLoading = false;
       })
       .addCase(logoutThunk.fulfilled, state => {
-        state.user = { name: null, email: null };
+        state.contacts.items = [];
         state.isLoggedIn = false;
       })
       .addMatcher(
