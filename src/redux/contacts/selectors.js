@@ -8,11 +8,13 @@ export const selectIsError = state => state.contacts.isError;
 export const selectFilteredContacts = createSelector(
   [selectContacts, selectNameFilter],
   (phonebook, statusFilter) => {
-    const newPhonebook = phonebook.filter(contact =>
-      contact.name
-        .toLowerCase()
-        .trim()
-        .includes(statusFilter.toLowerCase().trim())
+    const newPhonebook = phonebook.filter(
+      contact =>
+        contact.name
+          .toLowerCase()
+          .trim()
+          .includes(statusFilter.toLowerCase().trim()) ||
+        contact.number.includes(statusFilter)
     );
     return newPhonebook;
   }

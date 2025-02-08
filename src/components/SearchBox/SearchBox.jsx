@@ -9,7 +9,7 @@ const SearchBox = () => {
 
   return (
     <div className={css.thumb}>
-      <label htmlFor="inputFilter">Find contact by name</label>
+      <label htmlFor="inputFilter">Find contact by name or number</label>
       <input
         value={statusFilter}
         id="inputFilter"
